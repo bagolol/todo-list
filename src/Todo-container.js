@@ -29,7 +29,6 @@ class TodoContainer extends Component {
     };
 
     handleClickDelete(index) {
-        console.log(`Deleting todo number ${index}`);
         const { todos } = this.state;
         this.setState({ todos: [
             ...todos.slice(0, index),
@@ -60,8 +59,16 @@ class TodoContainer extends Component {
                 <p><span id="counter">1</span> remaining</p>
                 <div>{this.renderTodos()}</div>
                 <div className="todo-input">
-                    <input onChange={(e) => this.handleChange(e)} placeholder="..." type="text" value={todo}/>
-                    <button onClick={(e) => this.handleClickAdd(e)}>Add</button>
+                    <input
+                        onChange={(e) => this.handleChange(e)}
+                        placeholder="..."
+                        type="text"
+                        value={todo}
+                    />
+                    <button
+                        onClick={(e) => this.handleClickAdd(e)}
+                    >Add
+                    </button>
                 </div>
             </div>
         )
