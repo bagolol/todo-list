@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-export class Todo extends Component {
-  render () {
-    const { text, onClickDelete } = this.props;
+export const Todo = (props) => {
     return (
-      <div className="todo-item">
-        {text}
-        <span onClick={onClickDelete}>&times;</span>
-      </div>
+        <div className="todo-item">
+            {props.text}
+            <span onClick={props.onClickDelete}>&times;</span>
+        </div>
     );
-  }
 }
+
