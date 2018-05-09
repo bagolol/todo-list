@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { uniqueId } from 'lodash';
 import { Todo } from './Todo';
+import { Counter } from './Counter';
 
 class TodoContainer extends Component {
     constructor(props) {
@@ -8,14 +9,6 @@ class TodoContainer extends Component {
         this.state = {
             todo: '',
             todos: [ { text: 'Add your first todo' } ]
-        }
-    }
-    componentDidUpdate(prevProps, prevState){
-        const { todos: prevTodos } = prevState;
-        const { todos } = this.state;
-        if ( prevTodos.length !== todos.length ) {
-            // TODO set the counter via props
-            document.querySelector('#counter').innerText = todos.length;
         }
     }
 
@@ -41,7 +34,7 @@ class TodoContainer extends Component {
         if(todos.length > 0) {
             return todos.map((todo, index) =>
                 <Todo
-                    key={todo.id}
+                    key={uniqueId()}
                     onClickDelete={() => this.handleClickDelete(index)}
                     text={todo.text}
                 />)
@@ -49,14 +42,11 @@ class TodoContainer extends Component {
     }
 
     render() {
-        this.state.todos.forEach((todo, index) => {
-            this.state.todos[index] = { ...todo, id: uniqueId() };
-        });
-        const { todo, todos } = this.state;
+        const { todo, todos, count } = this.state;
         return (
             <div className="todo-list">
                 <h1>todos</h1>
-                <p><span id="counter">1</span> remaining</p>
+                <Counter count={todos.length}/>
                 <div>{this.renderTodos()}</div>
                 <div className="todo-input">
                     <input

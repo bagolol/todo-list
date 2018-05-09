@@ -1,4 +1,5 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const DIST_DIR = path.join(__dirname, '..', '..', 'dist');
