@@ -3,7 +3,7 @@ import { uniqueId } from 'lodash';
 import { Todo } from './Todo';
 import { Counter } from './Counter';
 
-class TodoContainer extends Component {
+export default class extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -66,4 +66,3 @@ class TodoContainer extends Component {
 
 }
 
-export default TodoContainer;
